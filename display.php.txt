@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>display</title>
+</head>
+<body>
+<table border="1 px solid">
+	<tr>
+		<th> Product Name</th>
+		<th> Product Email</th>
+		<th> Product Password</th>
+		<th> Catagory Name</th>
+		<th> Catagory Title</th>
+	</tr>
+	<?php 
+require('connection.php');
+
+$display = "SELECT product.name,product.email,product.password,catagory.name,catagory.title FROM product LEFT JOIN catagory ON product.id = catagory.catagory_id"; 
+
+$show = mysqli_query($connect,$display);
+while($row = mysqli_fetch_array($show)){
+
+	 ?>
+	 <tr> 
+		<td> <?php echo $row ['name'];?></td>
+		<td> <?php echo $row ['email'];?></td>
+		<td> <?php echo $row ['password'];?></td>
+		<td> <?php echo $row ['name'];?></td>
+		<td> <?php echo $row ['title'];?></td>
+	</tr>
+	 <?php
+}
+
+
+
+	?>
+	
+</table>
+</body>
+</html>
